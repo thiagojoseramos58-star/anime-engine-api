@@ -24,8 +24,13 @@ export default async function handler(req, res) {
 
     res.status(200).json({
       result: data.output_text || "Sem resposta",
-      debug: data // 👈 deixa temporariamente
+      debug: data
     });
 
   } catch (error) {
-    res.status(500
+    res.status(500).json({
+      error: "Erro na API",
+      details: error.message
+    });
+  }
+}
