@@ -1,0 +1,11 @@
+{
+  "name": "anime-engine-api",
+  "version": "1.0.0",
+  "description": "API para geração de histórias de anime",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {}
+}
