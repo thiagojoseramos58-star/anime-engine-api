@@ -15,20 +15,17 @@ export default async function handler(req, res) {
             role: "user",
             content: prompt
           }
-        ]
+        ],
+        max_output_tokens: 500
       })
     });
 
     const data = await response.json();
 
     res.status(200).json({
-      result: data.output_text || "Sem resposta"
+      result: data.output_text || "Sem resposta",
+      debug: data // 👈 deixa temporariamente
     });
 
   } catch (error) {
-    res.status(500).json({
-      error: "Erro na API",
-      details: error.message
-    });
-  }
-}
+    res.status(500
