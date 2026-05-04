@@ -10,14 +10,20 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: "gpt-4.1-mini",
-        input: prompt
+        input: [
+          {
+            role: "user",
+            content: prompt
+          }
+        ]
       })
     });
 
     const data = await response.json();
 
     res.status(200).json({
-      result: data.output?.[0]?.content?.[0]?.text || "Sem resposta"
+      result: data.output?.[0]?.content?.[0]?.text || "Sem resposta",
+      raw: data // 👈 TEMPORÁRIO pra debug
     });
 
   } catch (error) {
